@@ -1,0 +1,44 @@
+
+info:
+  project:
+    version: @project.version@
+
+spring:
+  application:
+    name: gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@localhost:8761/eureka/
+    enabled: true
+    healthcheck:
+      enabled: true
+  instance:
+    appname: gateway
+    instanceId: gateway:${spring.application.instance-id:${random.value}}
+    metadata-map:
+      profile: ${spring.profiles.active}
+      version: ${project.version}
+    ip-address: true
+
+ribbon:
+  eureka:
+    enabled: true
+  ConnectTimeout: 60000
+  ReadTimeout: 60000
+
+zuul:
+  host:
+    max-total-connections: 1000
+    max-per-route-connections: 100
+  semaphore:
+    max-semaphores: 500
+  routes:
+    wsa:
+      path: /atendimento/**
+      sensitiveHeaders: Set-Cookie
+
+server:
+  servlet:
+    context-path: /api
