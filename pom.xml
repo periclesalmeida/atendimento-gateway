@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.periclesalmeida.security</groupId>
-	<artifactId>Gateway</artifactId>
+	<artifactId>gateway</artifactId>
 	<version>1.0</version>
-	<name>Gateway</name>
+	<name>gateway</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
